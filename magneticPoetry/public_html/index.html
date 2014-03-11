@@ -1,0 +1,109 @@
+<!--
+Bartlomiej (Bart) Michalak
+Bpm215
+CSE297: Web Applications
+Assignment: Magnetic Poetry
+Due: 9/25/2013 @ 11:55PM
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Magnetic Poetry!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body onload="init();">
+        <form>
+            <input id="text" type="text" size="30">
+            <input type ="button" id="btn" value ="addWord" onclick="addWord();">
+        </form>
+
+        <button id="button1" style="left: 0px;" class="word">Hey</button>
+        <button id="button2" style="left: 50px;" class="word">I</button>
+        <button id="button3" style="left: 100px;" class="word">Just</button>
+        <button id="button4" style="left: 150px;" class="word">Met</button>
+        <button id="button5" style="left: 200px;" class="word">You</button>
+
+
+        <script>
+
+        var myWord;
+        var saveTop;
+        var saveLeft;
+
+        function addWord() {
+            var newTile = document.getElementById("text").value;
+            //alert(newTile);
+            if (newTile === '') {
+                alert("Empty textbox try again.");
+                return false;
+            }
+            else if (newTile !== '') {
+                var aqua = document.createElement("button");
+            }
+
+            aqua.setAttribute("class", "word");
+
+            aqua.innerHTML = newTile;
+
+            aqua.onmousedown = function(event) {
+                mouseDown(event);
+            };
+
+            document.body.appendChild(aqua);
+        }
+
+        function init() {
+            var buttonList = document.getElementsByClassName("button");
+
+            document.onmousedown = function(event) {
+                mouseUp(event);
+            };
+
+            document.onmousemove = function(event) {
+                mouseMove(event);
+            };
+
+            document.onmouseup = function(event) {
+                mouseDown(event);
+            };
+
+            var mySpot = 0;
+
+            for (var i = 0; i < buttonList.length; i++) {
+
+                buttonList[i].onmousedown = function(event) {
+
+                    mouseDown(event);
+                };
+
+                buttonList[i].style.left = mySpot + "px";
+                mySpot += buttonList[i].offsetWidth + 25;
+            }
+        }
+
+        function mouseUp(event) {
+            myWord = null;
+        }
+
+        function mouseDown(event) {
+            myWord = event.target;
+
+            saveTop = -event.target.offsetTop + event.clientY;
+            saveLeft = -event.target.offsetLeft + event.clientX;
+        }
+
+        function mouseMove(event) {
+            if (myWord !== null) {
+                myWord.style.top = event.clientY - saveTop + "px";
+                myWord.style.left = event.clientX - saveLeft + "px";
+            }
+            else
+                return false;
+        }
+
+        </script>
+
+    </body>
+</html>

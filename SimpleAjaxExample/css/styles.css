@@ -1,0 +1,21 @@
+/* 
+    Document   : setGameCSS
+    Created on : Nov 14, 2013, 5:11:43 PM
+    Author     : michalakz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.select{
+    border:solid 2px blue;
+}
+
+#myPlayers {
+	background-color: lightblue;
+}
+#commands{
+    border: solid 1px black;
+}

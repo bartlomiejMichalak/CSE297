@@ -1,0 +1,19 @@
+/* 
+    Document   : style
+    Created on : Sep 24, 2013, 4:42:14 PM
+    Author     : michalakz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {background-color:black;}
+
+.word{font-weight: normal; 
+      color:black; 
+      background-color:pink;
+      position:absolute;
+    }
